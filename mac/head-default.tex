@@ -1,0 +1,183 @@
+\documentclass[12pt]{article}
+
+\makeatletter
+\def\@maketitle {
+    \newpage
+    \null
+    \vskip 2em
+    \begin{center}
+        \let \footnote \thanks
+        {
+            \Large\bfseries \MakeUppercase{\@title} \par
+        }
+        \vskip 1.5em
+        {
+            \large \lineskip .5em \begin{tabular}[t]{c}
+                \MakeUppercase{\@author}
+            \end{tabular} \par
+        }
+        \vskip 1.5em
+        {
+            \large\scshape \@date
+        }
+    \end{center}
+    \par
+    \vskip 1.5em
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% basic
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+%% formatting
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{tocloft}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+%% maths
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+
+%% utilities
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[colorlinks=true]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Settings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% basic
+\setmainlanguage[variant=british]{english}
+\PolyglossiaSetup{english}{indentfirst=true}
+\setmainfont{Libertinus Serif}
+\setsansfont{Libertinus Sans}
+\setmonofont{Libertinus Mono}
+\setmathfont[AutoFakeBold]{Libertinus Math}
+
+%% formatting
+\doublespacing
+\setlist{noitemsep}
+\setlist[1]{labelindent=\parindent}
+\setlist[1]{listparindent=\parindent}
+\setlist[enumerate,1]{label=(\alph*)}
+\setlist[enumerate,2]{label=(\roman*)}
+\setlength{\headheight}{15.2pt}
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{0em}
+\setlength{\cftsubsubsecindent}{0em}
+\renewcommand*{\cfttoctitlefont}{\large\scshape}
+\renewcommand*{\cftsecfont}{\normalfont}
+\renewcommand*{\cftsecpagefont}{\normalfont}
+\renewcommand*{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\titleformat{\section}{
+    \normalfont\Large\scshape\filcenter
+}{}{1em}{}
+\titleformat{\subsection}{
+    \normalfont\large\scshape
+}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{
+    \normalfont\normalsize\scshape
+}{\thesubsubsection}{1em}{}
+\setcounter{footnote}{1}
+
+%% maths
+\makeatletter
+\newtheoremstyle{dfn}
+    {\topsep}
+    {\topsep}
+    {\upshape\addtolength{\@totalleftmargin}{3em}
+    \addtolength{\linewidth}{-6em}
+    \parshape 1 3em \linewidth}
+    {0pt}
+    {\scshape}
+    {.}
+    {5pt plus 1pt minus 1pt}
+    {}
+\newtheoremstyle{thm}
+    {\topsep}
+    {\topsep}
+    {\slshape\addtolength{\@totalleftmargin}{3em}
+    \addtolength{\linewidth}{-6em}
+    \parshape 1 3em \linewidth}
+    {0pt}
+    {\bfseries}
+    {.}
+    {5pt plus 1pt minus 1pt}
+    {}
+\newtheoremstyle{xrc}
+    {\topsep}
+    {\topsep}
+    {\upshape\addtolength{\@totalleftmargin}{3em}
+    \addtolength{\linewidth}{-6em}
+    \parshape 1 3em \linewidth}
+    {0pt}
+    {\bfseries\scshape}
+    {.}
+    {5pt plus 1pt minus 1pt}
+    {}
+\newtheoremstyle{sol}
+    {\topsep}
+    {\topsep}
+    {\upshape}
+    {0pt}
+    {\itshape}
+    {.}
+    {5pt plus 1pt minus 1pt}
+    {}
+\makeatother
+\theoremstyle{dfn}
+\newtheorem{dfn}{Definition}
+\theoremstyle{thm}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\theoremstyle{xrc}
+\newtheorem{xrc}{Exercise}
+\theoremstyle{sol}
+\newtheorem*{XxmpX}{Solution}
+\newenvironment{solution}{
+    \renewcommand{\qedsymbol}{\(\mdlgwhtlozenge\)}
+    \pushQED{\qed}\begin{XxmpX}
+}{\popQED\end{XxmpX}}
+
+%% aliases
+\newcommand*{\Bdc}[2][\today]{
+    \title{#2}
+    \author{Yannan Mao}
+    \date{#1}
+    \lhead{\scshape #2}
+    \rhead{\scshape Yannan Mao}
+    \begin{document}
+    \maketitle
+    \tableofcontents
+    \thispagestyle{empty}
+    \clearpage
+    \pagestyle{fancy}
+    \setcounter{page}{1}
+}
+\newcommand*{\Edc}{\end{document}}
+\newcommand*{\Bdf}{\begin{dfn}}
+\newcommand*{\Edf}{\end{dfn}}
+\newcommand*{\Bth}{\begin{thm}}
+\newcommand*{\Eth}{\end{thm}}
+\newcommand*{\Blm}{\begin{lem}}
+\newcommand*{\Elm}{\end{lem}}
+\newcommand*{\Bcr}{\begin{cor}}
+\newcommand*{\Ecr}{\end{cor}}
+\newcommand*{\Bxr}{\begin{xrc}}
+\newcommand*{\Exr}{\end{xrc}}
+\newcommand*{\Bpr}{\begin{proof}}
+\newcommand*{\Epr}{\end{proof}}
+\newcommand*{\Bsl}{\begin{solution}}
+\newcommand*{\Esl}{\end{solution}}
