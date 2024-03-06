@@ -1,4 +1,3 @@
-A collection of documents that I wrote.
+On Windows, use command `make platform=windows name=(filename)` to build `filename.tex`.
 
-Each directory except `mac` is supposed to be self-contained and has one
-document. The `mac` directory contains general macros.
+On Mac, use command `make platform=mac name=(filename)` to build `filename.tex`.

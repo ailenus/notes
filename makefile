@@ -1,21 +1,22 @@
-NAME=template
-TEX=xelatex.exe
-# BIBTEX=bibtex.exe
+ifeq ($(platform), windows)
+	TEX = xelatex.exe
+	CLEANUP = powershell -Command "Remove-Item *.aux, *.log, *.out, *.toc, *.synctex.gz -ErrorAction SilentlyContinue"
+else ifeq ($(platform), mac)
+	TEX = xelatex
+	CLEANUP = rm -f *.aux *.log *.out *.toc *.synctex.gz
+else
+$(error Please specify platform with 'platform=windows' or 'platform=mac')
+endif
 
-SRC=$(wildcard *.tex)
-# REF=$(wildcard *.bib)
+ifndef name
+$(error Please specify name with 'name=...')
+endif
 
-default: $(NAME).pdf clean open
+all: $(name).pdf clean
 
-$(NAME).pdf: $(SRC) # $(REF)
-	$(TEX) $(NAME)
-# $(BIBTEX) $(NAME)
-	$(TEX) $(NAME)
-# $(TEX) $(NAME)
-
-# this returns error code 1 but opens the PDF file using the default viewer
-open:
-	Explorer.exe $(NAME).pdf
+$(name).pdf: $(name).tex
+	$(TEX) $(name).tex
+	$(TEX) $(name).tex
 
 clean:
-	del *.aux *.log *.blg *.out *.toc *.nay *.snm *.dvi *.bbl
+	$(CLEANUP)
