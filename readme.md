@@ -1,3 +1,5 @@
-On Windows, use command `make platform=windows name=(filename)` to build `filename.tex`.
+Dependencies for building: XeLaTeX, GNU Make
 
-On Mac, use command `make platform=mac name=(filename)` to build `filename.tex`.
+On Windows, use command `make platform=windows name={name}` to build `{name}.tex`.
+
+On macOS, use command `make platform=mac name={name}` to build `{name}.tex`.
