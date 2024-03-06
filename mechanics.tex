@@ -1,16 +1,41 @@
 \input{./mac/head.tex}
 \input{./mac/maths.tex}
 
-\Bdc{Mechanics}
+\Bdc{Notes on Mechanics}
 
 \section{The Equations of Motion}
 
-The position of a particle in three-dimensional Euclidean space is defined by
-its radius vector \(\vct{r}\), whose components are its Cartesian coordinates
-\(x\), \(y\), and \(z\). The derivative \(\vct{v} = \diff \vct{r} / \diff t\)
-of \(\vct{r}\) with respect to time \(t\) is the {\bf velocity of the
-particle}, and the second derivative \(\diff^2 \vct{r} / \diff t^2\) is its
-\textbf{acceleration}. We denote differentiation with respect to time by
-\(\vct{v}\)
+The position of a particle in three-dimensional Euclidean space is defined by a vector \(\vct{r} \in \setreal^3\). We
+denote the derivative of \(\vct{r}\) with respect to time by \(\dot{\vct{r}}\), referred to as the \emph{velocity of the
+particle}, and the second derivative \(\ddot{\vct{r}}\) is its \emph{acceleration}.
+
+\subsection{Generalised Coordinates}
+
+In general, the number of independent quantities which are necessary to uniquely define the position of a system is the
+number of \emph{degrees of freedom of the system}. Any \(n \in \posint\) quantities \(q_1, \ldots, q_n\), each of which
+is in some subset of \(\setreal\), which completely define the position of a system with \(n\) degrees of freedom are
+referred to as \emph{generalised coordinates of the system}, and the derivatives \(\dot{q}_1, \ldots, \dot{q}_n\) are
+its \emph{generalised velocities}. Generalised coordinates span the \emph{configuration space of the system}. We denote
+generalised coordinates by an \(n\)-dimensional vector \(\vct{q}\).
+
+In principle, if all the coordinates \(\vct{q}\) and velocities \(\dot{\vct{q}}\) of a system are simultaneously
+specified for some instant, then accelerations \(\ddot{\vct{q}}\) for that instant are uniquely determined. The
+relations between the coordinates, velocities, and accelerations are the \emph{equations of motions of the system},
+which are second-order differential equations for the function \(\vct{q}(t)\) with respect to time \(t \in \setreal\).
+Solving for \(\vct{q}(t)\) makes possible the determination of the motion of the system.
+
+\subsection{The Stationary-Action Principle}
+
+The most general formulation of the law governing the motion of mechanical systems is the \emph{stationary-action
+principle} or the \emph{principle of least action}, according to which every mechanical system is characterised by a
+definite function \(L(\vct{q}(t), \dot{\vct{q}}(t), t)\), referred to as the \emph{Lagrangian}, and the motion of the
+system is such that a certain condition is satisfied.
+
+Let the system occupy, at the instants \(t_0\) and \(t_1\), positions defined by two sets of values of the coordinates,
+\(\vct{q}_0\) and \(\vct{q}_1\). Then the condition is that the system moves between these positions in such a way that
+\[
+  S[\vct{q}] = \int_{t_0}^{t_1} L(\vct{q}(t), \dot{\vct{q}}(t), t) \diff t
+\]
+is an extremum. The functional \(S[\vct{q}]\) is referred to as the \emph{action}.
 
 \Edc

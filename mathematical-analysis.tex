@@ -1,0 +1,72 @@
+\input{./mac/head.tex}
+\input{./mac/maths.tex}
+
+\Bdc{Mathematical Analysis}
+
+\section{Calculus of Variations}
+
+\subsection{Linear Forms}
+
+Let \(F\) be a field, and let \(V\) be a vector space over \(F\). A linear map from \(V\) into \(F\) is referred to as a
+\emph{linear form on \(V\)}. Equivalently, a function \(\map{f}{V}{F}\) is a linear form if \(f(\lambda \vct{a}
++ \vct{b}) = \lambda f(\vct{a}) + f(\vct{b})\) for any \(\lambda \in F\) and any \(\vct{a}, \vct{b} \in V\). Linear
+forms are also known as \emph{linear functionals}.
+
+Let \([x_0, x_1]\) be a closed interval on \(\setreal\), and let \(C^0\big([x_0, x_1]\big)\) be the vector space of
+continuous real functions on \([x_0, x_1]\). Then \(\map{J}{C^0\big([x_0, x_1]\big)}{\setreal}\) defined by
+\[
+  J(f) = \int_{x_0}^{x_1} f(x) \diff x
+\]
+is a linear form on \(C^0\big([x_0, x_1]\big)\).
+
+\subsection{Functionals and Their Extrema}
+
+Let \([x_0, x_1]\) be a closed interval on \(\setreal\), and let \(C^2\big([x_0, x_1]\big)\) be the set of twice
+continuously differentiable real functions on \([x_0, x_1]\). We refer to linear forms on \(C^2\big([x_0, x_1]\big)\) as
+\emph{functionals}. We denote a functional by enclosing its variable in square brackets.
+
+Let \(\Omega \subseteq C^2\big([x_0, x_1]\big)\) be a set of functions. A functional \(\map{J}{\Omega}{\setreal}\) is
+said to obtain an \emph{extremum at function \(f\)} if there exists an \(\varepsilon \in \posreal\) such that \(J[g]
+- J[f]\) has the same sign for any \(g \in \Omega\) which satisfies \(\forall x \in [x_0, x_1] \, \big(\abs{g(x) - f(x)}
+< \varepsilon\big)\).
+
+\subsection{Variations}
+
+Suppose \(g \in \Omega\) is a function whereat the functional \(J\) obtains an extremum. Take another function
+\(\map{\eta}{[x_0, x_1]}{\setreal}\) which vanishes at \(x_0\) and \(x_1\). We then form the family of functions
+\[
+  \varphi(x, \varepsilon) = g(x) + \varepsilon \eta(x)
+\]
+with \(\varepsilon \in \setreal\). Note that with any given \(\varepsilon\) we have \(\varphi \in \Omega\).
+
+We see that
+\[
+  \eta(x) = \frac{\partial \varphi}{\partial \varepsilon}
+\]
+and so we refer to \(\varepsilon \eta(x)\) as a \emph{variation of \(g\)} and denote it by \(\updelta g\).
+
+Let \(\psi(\varepsilon) = J[g + \varepsilon \eta]\) be a function of \(\varepsilon\). The postulate that \(g\) shall
+give an extremum of \{J\} implies that \(\psi\) shall possess a minimum for \(\varepsilon = 0\), so as a necessary
+condition we have the equation
+\[
+  \psi'(0) = 0.
+\]
+
+\subsection{Euler--Lagrange Equation}
+
+Let \(\Omega \subset C^2\big([x_0, x_1]\big)\) be given by \(\Omega = \set*{f \in C^2\big([x_0, x_1]\big) : y_0 = f(x_0)
+\, \land \, y_1 = f(x_1)}\) wherein \(y_0, y_1 \in \setreal\) are prescribed. Consider a functional of the form
+\begin{align}
+  \label{eq0}
+  J(f) = \int_{x_0}^{x_1} L\big(x, f'(x), f(x)\big) \diff x
+\end{align}
+wherein \(L\) is a twice continuously differentiable function with respect to \(x\), \(f'\), and \(f\).
+
+\Bth[Euler--Lagrange equation]
+  The functional \(J\) defined in \eqref{eq0} obtains an extremum at function \(f\) if and only if
+  \[
+    \frac{\partial L}{\partial f} - \frac{\diff}{\diff x} \frac{\partial L}{\partial f'}.
+  \]
+\Eth
+
+\Edc

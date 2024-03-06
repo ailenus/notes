@@ -82,10 +82,10 @@
     \normalfont\Large\scshape\filcenter
 }{}{1em}{}
 \titleformat{\subsection}{
-    \normalfont\large\scshape
+    \normalfont\large\scshape\raggedright
 }{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{
-    \normalfont\normalsize\scshape
+    \normalfont\normalsize\scshape\raggedright
 }{\thesubsubsection}{1em}{}
 \setcounter{footnote}{1}
 
@@ -140,6 +140,7 @@
 \newtheorem{thm}{Theorem}
 \newtheorem{lem}{Lemma}
 \newtheorem{cor}{Corollary}
+\renewcommand\qedsymbol{\(\mdlgwhtsquare\)}
 \theoremstyle{xrc}
 \newtheorem{xrc}{Exercise}
 \theoremstyle{sol}

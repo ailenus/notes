@@ -11,7 +11,7 @@
 
 \section{Automata and Formal Languages}
 
-An {\bf alphabet} is a finite set \(\Sigma\), and a {\bf word over the alphabet
+An \emph{alphabet} is a finite set \(\Sigma\), and a \emph{word over the alphabet
 \(\Sigma\)} is a finite sequence of the elements of \(\Sigma\). If a word \(w\)
 is the sequence \((w_0, \ldots, w_n)\) for some \(n \in \setnat\), we may write
 \(w\) as the concatenation \(w_0 \cdots w_n\). If \(w = a \cdots a\) wherein
@@ -22,14 +22,14 @@ an alphabet \(a^0\) is the empty word. The set of all words over \(\Sigma\) is
 as \(A^* = \set{a_0 \cdots a_n : n \in \setnat \land \forall \, i \in \Nln[n +
 1] \, (a_i \in A)} \cup \set{\epsilon}\) for a subset \(A\) of an alphabet, and
 \(a^* = \set{a^n : n \in \setnat}\) for an element \(a\) of an alphabet.}. A
-{\bf formal language over the alphabet \(\Sigma\)} is a subset of \(\Sigma^*\).
+\emph{formal language over the alphabet \(\Sigma\)} is a subset of \(\Sigma^*\).
 The attributive ``formal'' connotes that such languages lack semantics.
 
-An {\bf automaton} is an ordered sequence that {\bf accepts} some words over an
+An \emph{automaton} is an ordered sequence that \emph{accepts} some words over an
 alphabet. The set of words an automaton accepts forms a language, which is
-unique, in which case we say the automaton {\bf recognises} the language. Given
+unique, in which case we say the automaton \emph{recognises} the language. Given
 an automaton \(M\), we may speak of the unique language recognised by \(M\) as
-the {\bf language of the automaton \(M\)}. An automaton may accept no word, in
+the \emph{language of the automaton \(M\)}. An automaton may accept no word, in
 which case the language thereof is \(\nset\). Two automata are equivalent if
 they recognise the same language.
 
@@ -38,15 +38,15 @@ they recognise the same language.
 \subsubsection{Deterministic Finite-State Automata}
 
 \Bdf
-    A {\bf deterministic finite-state automaton} is an ordered quintuple
+    A \emph{deterministic finite-state automaton} is an ordered quintuple
     \((\Sigma, Q, \delta, q_0, F)\) wherein
     \begin{enumerate}
         \item \(\Sigma\) is an alphabet,
-        \item \(Q\) is a finite set of {\bf states},
-        \item \(\map{\delta}{Q \times \Sigma}{Q}\) is the {\bf transition
+        \item \(Q\) is a finite set of \emph{states},
+        \item \(\map{\delta}{Q \times \Sigma}{Q}\) is the \emph{transition
         function},
-        \item \(q_0 \in Q\) is the {\bf initial state}, and
-        \item \(F \subseteq Q\) is the set of {\bf accepting states}.
+        \item \(q_0 \in Q\) is the \emph{initial state}, and
+        \item \(F \subseteq Q\) is the set of \emph{accepting states}.
     \end{enumerate}
 \Edf
 
@@ -64,7 +64,7 @@ Furthermore, \(M\) accepts \(\epsilon\) if \(q_0 \in F\).
 \subsubsection{Nondeterministic Finite-State Automata}
 
 \Bdf
-    A {\bf nondeterministic finite-state automaton} is an ordered quintuple
+    A \emph{nondeterministic finite-state automaton} is an ordered quintuple
     \((\Sigma, Q, \delta, q_0, F)\) wherein
     \begin{enumerate}
         \item \(\Sigma\) is an alphabet,
@@ -133,7 +133,7 @@ sequence of states \((r_0, \ldots, r_{n + 1})\) in \(Q\) such that
 \subsubsection{Regular Expressions and Regular Languages}
 
 \Bdf
-    Let \(\Sigma\) be an alphabet. Then \(R\) is a {\bf regular expression over
+    Let \(\Sigma\) be an alphabet. Then \(R\) is a \emph{regular expression over
     \(\Sigma\)} if
     \begin{enumerate}
         \item \(R = \nset\),
@@ -149,7 +149,7 @@ sequence of states \((r_0, \ldots, r_{n + 1})\) in \(Q\) such that
     \end{enumerate}
 \Edf
 
-The language described by a regular expression is a {\bf regular language},
+The language described by a regular expression is a \emph{regular language},
 which is unique. If \(R\) is a regular expression, we denote the regular
 language it describes by \(L(R)\).
 
@@ -175,7 +175,7 @@ L(R_1)^*\).
 
     If \(R = \nset\), then the nondeterministic finite-state automaton \(N\)
     characterised by the following diagram recognises \(L(R)\).
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
         \centering
         \begin{tikzpicture}[
             ->,>=latex,auto,semithick,
@@ -190,7 +190,7 @@ L(R_1)^*\).
 
     If \(R = \epsilon\), then the nondeterministic finite-state automaton \(N\)
     characterised by the following diagram recognises \(L(R)\).
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
         \centering
         \begin{tikzpicture}[
             ->,>=latex,auto,semithick,
@@ -206,7 +206,7 @@ L(R_1)^*\).
     If \(R = a\) for some \(a \in \Sigma\), then the nondeterministic
     finite-state automaton \(N\) characterised by the following diagram
     recognises \(L(R)\).
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
         \centering
         \begin{tikzpicture}[
             ->,>=latex,auto,semithick,
@@ -281,7 +281,7 @@ L(R_1)^*\).
 \Epr
 
 \Bdf
-    A {\bf generalised nondeterministic finite-state automaton} is an ordered
+    A \emph{generalised nondeterministic finite-state automaton} is an ordered
     quintuple \((\Sigma, Q, \delta, q_0, q_1)\) wherein
     \begin{enumerate}
         \item \(\Sigma\) is an alphabet,
@@ -438,11 +438,11 @@ sequence of states \((r_0, \ldots, r_{n + 1})\) in \(Q\) such that
 \subsubsection{Pushdown Automata}
 
 \Bdf
-    A {\bf pushdown automaton} is an ordered sextuple \((\Sigma, \Gamma, Q,
+    A \emph{pushdown automaton} is an ordered sextuple \((\Sigma, \Gamma, Q,
     \delta, q_0, F)\) wherein
     \begin{enumerate}
         \item \(\Sigma\) is an alphabet for the input,
-        \item \(\Gamma\) is another alphabet for the {\bf stack},
+        \item \(\Gamma\) is another alphabet for the \emph{stack},
         \item \(Q\) is a finite set of states,
         \item \(\map{\delta}{Q \times (\Sigma \cup \set{\epsilon}) \times
         (\Gamma \cup \set{\epsilon})}{\pow\big(Q \times (\Gamma \cup
@@ -474,7 +474,7 @@ some \(i \in \Nln[n + 1]\) and that there exist a sequence of states \((r_0,
 \Bsl
     The pushdown automaton \(P\) characterised by the following diagram
     recognises \(A\).
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
         \centering
         \begin{tikzpicture}[
             ->,>=latex,auto,semithick,
@@ -521,23 +521,22 @@ some \(i \in \Nln[n + 1]\) and that there exist a sequence of states \((r_0,
 \subsubsection{Context-Free Grammars and Context-Free Languagse}
 
 \Bdf
-    A {\bf context-free grammar} is an ordered quadruple \((\Sigma, V, R, S)\)
+    A \emph{context-free grammar} is an ordered quadruple \((\Sigma, V, R, S)\)
     wherein
     \begin{enumerate}
-        \item \(\Sigma\) is an alphabet of {\bf terminals},
-        \item \(V\) is another alphabet of {\bf variables}, which is disjoint
+        \item \(\Sigma\) is an alphabet of \emph{terminals},
+        \item \(V\) is another alphabet of \emph{variables}, which is disjoint
         from \(\Sigma\),
-        \item \(\map{R}{V}{(\Sigma \cup V)^*}\) is a finite set of {\bf
-        production rules}, and
-        \item \(S \in V\) is the {\bf start variable}.
+        \item \(\map{R}{V}{(\Sigma \cup V)^*}\) is a finite set of \emph{production rules}, and
+        \item \(S \in V\) is the \emph{start variable}.
     \end{enumerate}
 \Edf
 
 Let \((\Sigma, V, R, S)\) be a context-free grammar. If \(R(A) = w\) wherein \(A
 \in V\) and \(w \in (\Sigma \cup V)^*\) is a production rule, we write \(A \to
 w\). Let \(u\), \(v\), and \(w \in (\Sigma \cup V)^*\). If \(A \to w\) is a
-production rule, we say that \(u A v\) {\bf yields} \(u w v\) and write \(u A v
-\Rightarrow u w v\). We say that \(u\) {\bf derives} \(v\) and write \(u
+production rule, we say that \(u A v\) \emph{yields} \(u w v\) and write \(u A v
+\Rightarrow u w v\). We say that \(u\) \emph{derives} \(v\) and write \(u
 \Rightarrow^* v\) if \(u = v\), \(u \Rightarrow v\), or there exists a sequence
 \((u_0, \ldots, u_n)\) in \((\Sigma \cup V)^*\) for some \(n \in \setnat\) such
 that
@@ -545,10 +544,10 @@ that
     u \Rightarrow u_0 \Rightarrow \cdots \Rightarrow u_n \Rightarrow v.
 \]
 If \(A \to u\) and \(A \to v\) are production rules of the grammar, we may
-denote them by \(A \to u \, | \, v\). The {\bf language generated by the
+denote them by \(A \to u \, | \, v\). The \emph{language generated by the
 grammar} is \(\set{w \in \Sigma^* : S \Rightarrow^* w}\).
 
-The language generated by a context-free grammar is a {\bf context-free
+The language generated by a context-free grammar is a \emph{context-free
 language}.
 
 \Bxr
@@ -564,25 +563,25 @@ language}.
     The language generated by the above context-free grammar is \(A\).
 \Esl
 
-A derivation of a word in a context-free grammar is a {\bf leftmost derivation}
+A derivation of a word in a context-free grammar is a \emph{leftmost derivation}
 if at every step of production the leftmost remaining variable is the one
 substituted according to a production rule.
 
 \Bdf
-    A word is derived {\bf ambiguously} in a context-free grammar if there exist
+    A word is derived \emph{ambiguously} in a context-free grammar if there exist
     two or more distinct leftmost derivations for it.
 
-    A context-free grammar is {\bf ambiguous} is it generates some words
+    A context-free grammar is \emph{ambiguous} is it generates some words
     ambiguously.
 \Edf
 
 Some context-free languages can only be generated by ambiguous context-free
-grammars. Such languages are {\bf inherently ambiguous}.
+grammars. Such languages are \emph{inherently ambiguous}.
 
 \subsubsection{Chomsky Normal Form}
 
 \Bdf
-    A context-free grammar is {\bf in Chomsky normal form} if every production
+    A context-free grammar is \emph{in Chomsky normal form} if every production
     rule thereof is
     \begin{enumerate}
         \item \(S \to \epsilon\) wherein \(S\) is the start variable,
@@ -668,7 +667,7 @@ grammars. Such languages are {\bf inherently ambiguous}.
     previous paragraph.
 
     The following diagram illustrates the constructed \(P\).
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
         \centering
         \begin{tikzpicture}[
             ->,>=latex,auto,semithick,

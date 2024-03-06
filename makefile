@@ -1,7 +1,7 @@
 ifeq ($(platform), windows)
 	TEX = xelatex.exe
 	CLEAN = powershell -Command "Remove-Item *.aux, *.log, *.out, *.toc, *.synctex.gz -ErrorAction SilentlyContinue"
-	OPEN = Explorer.exe
+	OPEN = powershell -Command "sumatra"
 else ifeq ($(platform), mac)
 	TEX = xelatex
 	CLEAN = rm -f *.aux *.log *.out *.toc *.synctex.gz
