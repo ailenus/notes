@@ -31,8 +31,8 @@
 
 \section{A Proof of the General Cauchy--Schwarz Inequality}
 
-In this section we introduce the general Cauchy--Schwarz inequality, as well as
-provide a brief proof thereof using Young's inequality.
+In this section we introduce the general Cauchy--Schwarz inequality, as well as provide a brief proof thereof using
+Young's inequality.
 
 \Bth[Cauchy--Schwarz]
 For an \(x = (x_1, \ldots, x_n) \in \setreal^n\), let
@@ -47,22 +47,18 @@ Then
 \[
     \abs*{\sum_{i = 1}^n x_i y_i} \le \norm{x}_p \norm{y}_q
 \]
-wherein \(p, q \in \posreal \cup \set{\infty}\) and \(\dis \frac{1}{p}
-+ \frac{1}{q} = 1\).
+wherein \(p, q \in \posreal \cup \set{\infty}\) and \(\dis \frac{1}{p} + \frac{1}{q} = 1\).
 \Eth
 
 \Bpr
-We may assume that \(\norm{x}_p = \norm{y}_q = 1\) without loss of generality.
-By Young's inequality, which states that
-for \(a, b \in \nonneg\) we have \(\dis a b \le \frac{a^p}{p}
-+ \frac{b^q}{q}\), we find that
+We may assume that \(\norm{x}_p = \norm{y}_q = 1\) without loss of generality. By Young's inequality, which states that
+for \(a, b \in \nonneg\) we have \(\dis a b \le \frac{a^p}{p} + \frac{b^q}{q}\), we find that
 \[
     \abs*{\sum_{i = 1}^n x_i y_i} \le \sum_{i = 1}^n \abs{x_i y_i} \le \sum_{i =
     1}^n \left(\frac{\abs{x_i}^p}{p} + \frac{\abs{y_i}^q}{q}\right) = 1.
 \]
 
-To prove Young's inequality, let \(\dis t = \frac{1}{p}\). Then \(\dis
-\frac{1}{q} = 1 - t\). It follows that
+To prove Young's inequality, let \(\dis t = \frac{1}{p}\). Then \(\dis \frac{1}{q} = 1 - t\). It follows that
 \[
     \ln \big(t x + (1 - t) y \big) \ge t \ln x + (1 - t) \ln y. \qedhere
 \]
