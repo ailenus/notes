@@ -1,7 +1,7 @@
 \input{./mac/head.tex}
 \input{./mac/maths.tex}
 
-\Bdc{Mathematical Analysis}
+\Bdc{Notes on Mathematical Analysis}
 
 \section{Calculus of Variations}
 
@@ -32,6 +32,14 @@ said to obtain an \emph{extremum at function \(f\)} if there exists an \(\vareps
 
 \subsection{Variations}
 
+Let \(\Omega \subset C^2\big([x_0, x_1]\big)\) be given by \(\Omega = \set*{f \in C^2\big([x_0, x_1]\big) : y_0 = f(x_0)
+\, \land \, y_1 = f(x_1)}\) wherein \(y_0, y_1 \in \setreal\) are prescribed. Consider a functional of the form
+\begin{align}
+  \label{eq0}
+  J(f) = \int_{x_0}^{x_1} L\big(x, f'(x), f(x)\big) \diff x
+\end{align}
+wherein \(L\) is a twice continuously differentiable function with respect to \(x\), \(f'\), and \(f\).
+
 Suppose \(g \in \Omega\) is a function whereat the functional \(J\) obtains an extremum. Take another function
 \(\map{\eta}{[x_0, x_1]}{\setreal}\) which vanishes at \(x_0\) and \(x_1\). We then form the family of functions
 \[
@@ -53,14 +61,6 @@ condition we have the equation
 \]
 
 \subsection{Euler--Lagrange Equation}
-
-Let \(\Omega \subset C^2\big([x_0, x_1]\big)\) be given by \(\Omega = \set*{f \in C^2\big([x_0, x_1]\big) : y_0 = f(x_0)
-\, \land \, y_1 = f(x_1)}\) wherein \(y_0, y_1 \in \setreal\) are prescribed. Consider a functional of the form
-\begin{align}
-  \label{eq0}
-  J(f) = \int_{x_0}^{x_1} L\big(x, f'(x), f(x)\big) \diff x
-\end{align}
-wherein \(L\) is a twice continuously differentiable function with respect to \(x\), \(f'\), and \(f\).
 
 \Bth[Euler--Lagrange equation]
   The functional \(J\) defined in \eqref{eq0} obtains an extremum at function \(f\) if and only if

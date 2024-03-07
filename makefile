@@ -1,13 +1,13 @@
-ifeq ($(platform), windows)
-	TEX = xelatex.exe
+ifeq ($(os), win)
+	TEX = lualatex.exe
 	CLEAN = powershell -Command "Remove-Item *.aux, *.log, *.out, *.toc, *.synctex.gz -ErrorAction SilentlyContinue"
 	OPEN = powershell -Command "sumatra"
-else ifeq ($(platform), mac)
-	TEX = xelatex
+else ifeq ($(os), mac)
+	TEX = lualatex
 	CLEAN = rm -f *.aux *.log *.out *.toc *.synctex.gz
 	OPEN = open -a Preview.app
 else
-$(error Please specify platform with 'platform=windows' or 'platform=mac')
+$(error Please specify platform with 'os=win' or 'os=mac')
 endif
 
 ifndef name
