@@ -3,7 +3,7 @@
 
 \Bdc{Notes on Mathematical Analysis}
 
-\section{Calculus of Variations}
+\section{The Calculus of Variations}
 
 \subsection{Linear Forms}
 
@@ -30,20 +30,20 @@ said to obtain an \emph{extremum at function \(f\)} if there exists an \(\vareps
 - J[f]\) has the same sign for any \(g \in \Omega\) which satisfies \(\forall x \in [x_0, x_1] \, \big(\abs{g(x) - f(x)}
 < \varepsilon\big)\).
 
-\subsection{Variations}
+\subsection{Vanishing of the First Variation}
 
 Let \(\Omega \subset C^2\big([x_0, x_1]\big)\) be given by \(\Omega = \set*{f \in C^2\big([x_0, x_1]\big) : y_0 = f(x_0)
 \, \land \, y_1 = f(x_1)}\) wherein \(y_0, y_1 \in \setreal\) are prescribed. Consider a functional of the form
 \begin{align}
   \label{eq0}
-  J(f) = \int_{x_0}^{x_1} L\big(x, f'(x), f(x)\big) \diff x
+  J[f] = \int_{x_0}^{x_1} L\big(x, f'(x), f(x)\big) \diff x
 \end{align}
 wherein \(L\) is a twice continuously differentiable function with respect to \(x\), \(f'\), and \(f\).
 
-Suppose \(g \in \Omega\) is a function whereat the functional \(J\) obtains an extremum. Take another function
-\(\map{\eta}{[x_0, x_1]}{\setreal}\) which vanishes at \(x_0\) and \(x_1\). We then form the family of functions
+Suppose \(f \in \Omega\) is a function whereat the functional \(J\) obtains an extremum. Take another function
+\(\eta \in C^2\big([x_0, x_1]\big)\) which vanishes at \(x_0\) and \(x_1\). We then form the family of functions
 \[
-  \varphi(x, \varepsilon) = g(x) + \varepsilon \eta(x)
+  \varphi(x, \varepsilon) = f(x) + \varepsilon \eta(x)
 \]
 with \(\varepsilon \in \setreal\). Note that with any given \(\varepsilon\) we have \(\varphi \in \Omega\).
 
@@ -51,19 +51,54 @@ We see that
 \[
   \eta(x) = \frac{\partial \varphi}{\partial \varepsilon}
 \]
-and so we refer to \(\varepsilon \eta(x)\) as a \emph{variation of \(g\)} and denote it by \(\updelta g\).
+and so we refer to \(\varepsilon \eta(x)\) as a \emph{variation of \(f\)} and denote it by \(\updelta f\).
 
-Let \(\psi(\varepsilon) = J[g + \varepsilon \eta]\) be a function of \(\varepsilon\). The postulate that \(g\) shall
-give an extremum of \{J\} implies that \(\psi\) shall possess a minimum for \(\varepsilon = 0\), so as a necessary
-condition we have the equation
+Let \(\psi(\varepsilon) = J[f + \varepsilon \eta]\) be a real function. The postulate that \(f\) shall give an extremum
+of \(J\) implies that \(\psi\) shall possess an extremum for \(\varepsilon = 0\), and so it is necessary that
 \[
   \psi'(0) = 0.
 \]
+If \(f\) satisfies \(\psi'(0) = 0\) for any \(\eta\), we then say that \(J\) is \emph{stationary at \(f\)}.
 
-\subsection{Euler--Lagrange Equation}
+In general, we refer to \(\varepsilon \psi'(0)\) as the \emph{first variation of \(J\)} and denote it by \(\updelta J\).
+Thus, the stationary character of \(J\) at \(f\) is equivalent to the vanishing of the first variation.
 
-\Bth[Euler--Lagrange equation]
-  The functional \(J\) defined in \eqref{eq0} obtains an extremum at function \(f\) if and only if
+\subsection{The Fundamental Lemma of the Calculus of Variations}
+
+\Blm[fundamental lemma of the calculus of variations]
+  If a function \(f \in C^0\big([x_0, x_1]\big)\) satisfies
+  \[
+    \int_{x_0}^{x_1} \eta(x) f(x) \diff x = 0
+  \]
+  for any \(\eta \in C^2\big([x_0, x_1]\big)\) such that \(\eta(x_0) = \eta(x_1) = 0\), then \(f(x) = 0\) for any
+  \(x \in [x_0, x_1]\).
+\Elm
+\Bpr
+  We assume, for the sake of contradiction, that there exists a \(\xi \in [x_0, x_1]\) such that \(f(\xi) > 0\) and
+  which satisfies all the prescribed conditions. Then, as \(f\) is continuous on \([x_0, x_1]\), there exists an
+  \(\alpha \in \posreal\) such that \(f(x) > 0\) for any \(x \in [\xi - \alpha, \xi + \alpha] \subseteq [x_0, x_1]\).
+  Let \(\eta \in C^2\big([x_0, x_1]\big)\) be defined by
+  \[
+    \eta(x) = \begin{cases}
+      \big((x - \xi)^2 - \alpha^2\big)^4 & \text{if } x \in [\xi - \alpha, \xi + \alpha],\\
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+  We see that \(\eta(x) f(x) > 0\) for any \(x \in [\xi - \alpha, \xi + \alpha]\) and that \(\eta(x) f(x) = 0\) for any
+  \(x \in [x_0, \xi - \alpha) \cup (\xi + \alpha, x_1]\). It follows that
+  \[
+    \int_{x_0}^{x_1} \eta(x) f(x) \diff x > 0,
+  \]
+  which is a contradiction. Therefore, \(f(\xi)\) cannot be positive. For the same reasons, \(f(\xi)\) cannot be
+  negative. Hence, \(f(x)\) must vanish for any \(x \in [x_0, x_1]\).
+
+  Thus, our original proposition holds.
+\Epr
+
+\subsection{The Euler--Lagrange Equation}
+
+\Bth[Euler--Lagrange]
+  The functional \(J\) defined in \eqref{eq0} is stationary at function \(f\) if and only if
   \[
     \frac{\partial L}{\partial f} - \frac{\diff}{\diff x} \frac{\partial L}{\partial f'}.
   \]

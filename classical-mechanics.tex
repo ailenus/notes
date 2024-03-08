@@ -1,13 +1,14 @@
 \input{./mac/head.tex}
 \input{./mac/maths.tex}
 
-\Bdc{Notes on Mechanics}
+\Bdc{Notes on Classical Mechanics}
 
 \section{The Equations of Motion}
 
-The position of a particle in three-dimensional Euclidean space is defined by a vector \(\vct{r} \in \setreal^3\). We
-denote the derivative of \(\vct{r}\) with respect to time by \(\dot{\vct{r}}\), referred to as the \emph{velocity of the
-particle}, and the second derivative \(\ddot{\vct{r}}\) is its \emph{acceleration}.
+The position of a particle in three-dimensional Euclidean space is defined by a vector \(\vct{r} \in \setreal^3\). Its
+derivative \(\dis \vct{v} = \frac{\diff \vct{r}}{\diff t}\) with respect to time \(t \in \setreal\) is the
+\emph{velocity of the particle}, denoted by a dot above: \(\vct{v} = \dot{\vct{r}}\). The second derivative \(\dis
+\ddot{\vct{r}} = \frac{\diff^2 \vct{r}}{\diff t^2}\) is the \emph{acceleration of the particle}.
 
 \subsection{Generalised Coordinates}
 
@@ -21,8 +22,8 @@ generalised coordinates by an \(n\)-dimensional vector \(\vct{q}\).
 In principle, if all the coordinates \(\vct{q}\) and velocities \(\dot{\vct{q}}\) of a system are simultaneously
 specified for some instant, then accelerations \(\ddot{\vct{q}}\) for that instant are uniquely determined. The
 relations between the coordinates, velocities, and accelerations are the \emph{equations of motions of the system},
-which are second-order differential equations for the function \(\vct{q}(t)\) with respect to time \(t \in \setreal\).
-Solving for \(\vct{q}(t)\) makes possible the determination of the motion of the system.
+which are second-order differential equations for the function \(\vct{q}(t)\). Solving for \(\vct{q}(t)\) makes possible
+the determination of the motion of the system.
 
 \subsection{The Stationary-Action Principle}
 
