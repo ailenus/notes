@@ -31,6 +31,7 @@ said to obtain an \emph{extremum at function \(f\)} if there exists an \(\vareps
 < \varepsilon\big)\).
 
 \subsection{Vanishing of the First Variation}
+\label{subsec01}
 
 Let \(\Omega \subset C^2\big([x_0, x_1]\big)\) be given by \(\Omega = \set*{f \in C^2\big([x_0, x_1]\big) : y_0 = f(x_0)
 \, \land \, y_1 = f(x_1)}\) wherein \(y_0, y_1 \in \setreal\) are prescribed. Consider a functional of the form
@@ -49,7 +50,7 @@ with \(\varepsilon \in \setreal\). Note that with any given \(\varepsilon\) we h
 
 We see that
 \[
-  \eta(x) = \frac{\partial \varphi}{\partial \varepsilon}
+  \eta(x) = \frac{\partial \varphi}{\partial \varepsilon},
 \]
 and so we refer to \(\varepsilon \eta(x)\) as a \emph{variation of \(f\)} and denote it by \(\updelta f\).
 
@@ -66,6 +67,7 @@ Thus, the stationary character of \(J\) at \(f\) is equivalent to the vanishing 
 \subsection{The Fundamental Lemma of the Calculus of Variations}
 
 \Blm[fundamental lemma of the calculus of variations]
+  \label{lm01}
   If a function \(f \in C^0\big([x_0, x_1]\big)\) satisfies
   \[
     \int_{x_0}^{x_1} \eta(x) f(x) \diff x = 0
@@ -92,16 +94,60 @@ Thus, the stationary character of \(J\) at \(f\) is equivalent to the vanishing 
   which is a contradiction. Therefore, \(f(\xi)\) cannot be positive. For the same reasons, \(f(\xi)\) cannot be
   negative. Hence, \(f(x)\) must vanish for any \(x \in [x_0, x_1]\).
 
-  Thus, our original proposition holds.
+  Thus, the lemma holds.
 \Epr
 
 \subsection{The Euler--Lagrange Equation}
 
 \Bth[Euler--Lagrange]
-  The functional \(J\) defined in \eqref{eq0} is stationary at function \(f\) if and only if
+  The functional \(J\) defined in \autoref{eq0} is stationary at function \(f\) if and only if
   \[
-    \frac{\partial L}{\partial f} - \frac{\diff}{\diff x} \frac{\partial L}{\partial f'}.
+    \frac{\partial L}{\partial f}\big(x, f(x), f'(x)\big) - \frac{\diff}{\diff x} \frac{\partial L}{\partial f'}\big(x,
+    f(x), f'(x)\big) = 0
   \]
+  for any \(x \in [x_0, x_1]\).
 \Eth
+\Bpr
+  As shown in \autoref{subsec01}, that \(J\) is stationary at \(f\) is equivalent to the vanishing of
+  {\allowdisplaybreaks
+    \begin{align*}
+      \left.\frac{\diff \psi}{\diff \varepsilon}(\varepsilon)\right|_{\varepsilon = 0}
+      = & \left.\frac{\diff}{\diff \varepsilon} \int_{x_0}^{x_1} J\big[f(x) + \varepsilon \eta(x)\big]
+      \diff x\right|_{\varepsilon = 0}\\
+      = & \left.\frac{\diff}{\diff \varepsilon} \int_{x_0}^{x_1} L\big(x, f(x) + \varepsilon \eta(x), f'(x) + \varepsilon
+      \eta'(x)\big) \diff x\right|_{\varepsilon = 0}\\
+      = & \int_{x_0}^{x_1} \left.\frac{\partial}{\partial \varepsilon} L\big(x, f(x) + \varepsilon \eta(x), f'(x)
+      + \varepsilon \eta'(x)\big)\right|_{\varepsilon = 0} \diff x\\
+      = & \int_{x_0}^{x_1} \left(\left.\frac{\partial}{\partial \varepsilon}\big(f(x) + \varepsilon
+      \eta(x)\big)\right|_{\varepsilon = 0} \left.\frac{\partial L}{\partial (f + \varepsilon \eta)}\big(x, f(x)
+      + \varepsilon \eta(x), f'(x) + \varepsilon \eta'(x)\big)\right|_{\varepsilon = 0}\right.\\
+      & + \left.\left.\frac{\partial}{\partial \varepsilon} \big(f'(x) + \varepsilon \eta'(x)\big)\right|_{\varepsilon
+      = 0} \left.\frac{\partial L}{\partial (f' + \varepsilon \eta')}\big(x, f(x) + \varepsilon \eta(x), f'(x)
+      + \varepsilon \eta'(x)\big)\right|_{\varepsilon = 0}\right) \diff x\\
+      = & \int_{x_0}^{x_1} \left(\eta(x) \frac{\partial L}{\partial f}\big(x, f(x), f'(x)\big) + \eta'(x)
+      \frac{\partial L}{\partial f'}\big(x, f(x), f'(x)\big)\right) \diff x.
+    \end{align*}
+  }
+  We further see that
+  \begin{align*}
+    \int_{x_0}^{x_1} \eta'(x) \frac{\partial L}{\partial f'}\big(x, f(x), f'(x)\big) \diff x = & \left.\eta(x)
+    \frac{\partial L}{\partial f'}\big(x, f(x), f'(x)\big)\right|_{x_0}^{x_1}\\
+    & - \int_{x_0}^{x_1} \eta(x) \diff \frac{\partial L}{\partial f'}\big(x, f(x), f'(x)\big)\\
+    = & - \int_{x_0}^{x_1} \eta(x) \frac{\diff}{\diff x} \frac{\partial L}{\partial f'}\big(x, f(x), f'(x)\big) \diff x.
+  \end{align*}
+  By integration by parts, the equivalent condition is then
+  \[
+    \int_{x_0}^{x_1} \eta(x) \left(\frac{\partial L}{\partial f}\big(x, f(x), f'(x)\big) - \frac{\diff}{\diff x}
+    \frac{\partial L}{\partial f'}\big(x, f(x), f'(x)\big)\right) \diff x = 0.
+  \]
+  By \autoref{lm01}, we then conclude that
+  \[
+    \frac{\partial L}{\partial f}\big(x, f(x), f'(x)\big) - \frac{\diff}{\diff x} \frac{\partial L}{\partial f'}\big(x,
+    f(x), f'(x)\big) = 0
+  \]
+  for any \(x \in [x_0, x_1]\).
+
+  Hence, the theorem holds.
+\Epr
 
 \Edc

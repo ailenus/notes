@@ -13,11 +13,11 @@ derivative \(\dis \vct{v} = \frac{\diff \vct{r}}{\diff t}\) with respect to time
 \subsection{Generalised Coordinates}
 
 In general, the number of independent quantities which are necessary to uniquely define the position of a system is the
-number of \emph{degrees of freedom of the system}. Any \(n \in \posint\) quantities \(q_1, \ldots, q_n\), each of which
-is in some subset of \(\setreal\), which completely define the position of a system with \(n\) degrees of freedom are
-referred to as \emph{generalised coordinates of the system}, and the derivatives \(\dot{q}_1, \ldots, \dot{q}_n\) are
-its \emph{generalised velocities}. Generalised coordinates span the \emph{configuration space of the system}. We denote
-generalised coordinates by an \(n\)-dimensional vector \(\vct{q}\).
+number of \emph{degrees of freedom of the system}. Any \(n \in \posint\) quantities \(q_0, \ldots, q_{n - 1}\), each of
+which is in some subset of \(\setreal\), which completely define the position of a system with \(n\) degrees of freedom
+are referred to as \emph{generalised coordinates of the system}, and the derivatives \(\dot{q}_0, \ldots, \dot{q}_{n
+- 1}\) are its \emph{generalised velocities}. Generalised coordinates span the \emph{configuration space of the system}.
+We denote generalised coordinates by an \(n\)-dimensional vector \(\vct{q}\).
 
 In principle, if all the coordinates \(\vct{q}\) and velocities \(\dot{\vct{q}}\) of a system are simultaneously
 specified for some instant, then accelerations \(\ddot{\vct{q}}\) for that instant are uniquely determined. The
@@ -29,14 +29,76 @@ the determination of the motion of the system.
 
 The most general formulation of the law governing the motion of mechanical systems is the \emph{stationary-action
 principle} or the \emph{principle of least action}, according to which every mechanical system is characterised by a
-definite function \(L(\vct{q}(t), \dot{\vct{q}}(t), t)\), referred to as the \emph{Lagrangian}, and the motion of the
+definite function \(L\big(\vct{q}(t), \dot{\vct{q}}(t), t\big)\), referred to as the \emph{Lagrangian}, and the motion of the
 system is such that a certain condition is satisfied.
 
 Let the system occupy, at the instants \(t_0\) and \(t_1\), positions defined by two sets of values of the coordinates,
 \(\vct{q}_0\) and \(\vct{q}_1\). Then the condition is that the system moves between these positions in such a way that
 \[
-  S[\vct{q}] = \int_{t_0}^{t_1} L(\vct{q}(t), \dot{\vct{q}}(t), t) \diff t
+  S[\vct{q}] = \int_{t_0}^{t_1} L\big(\vct{q}(t), \dot{\vct{q}}(t), t\big) \diff t
 \]
-is stationary. The functional \(S[\vct{q}]\) is referred to as the \emph{action}.
+is stationary. The functional \(S[\vct{q}]\) is referred to as the \emph{action}. The fact that the Lagrangian contains
+only \(\vct{q}\) and \(\dot{\vct{q}}\) expresses the aforementioned result that the mechanical state of the system is
+determined when the coordinates and velocities are given.
+
+From the calculus of variations, we know that the functional \(S[\vct{q}]\) is stationary if and only if its first
+variation vanishes. Thus, the stationary-action principle may also be written
+\[
+  \updelta S[\vct{q}] = \updelta \int_{t_0}^{t_1} L\big(\vct{q}(t), \dot{\vct{q}}(t), t\big) \diff t = 0.
+\]
+And per Euler--Lagrange, the above condition is equivalent to \(n\) differential equations
+\[
+  \frac{\diff}{\diff t} \frac{\partial L}{\partial \dot{q}_i} - \frac{\partial L}{\partial q_i} = 0, \quad i \in \Nln.
+\]
+The general solution contains \(2 n\) arbitrary constants, which are determined by the initial conditions which specify
+the state of the system at some given instant, for example the initial values of all the coordinates and velocities.
+
+The Lagrangian is additive among systems between which interactions may be neglected as the distance between which tends
+to infinity, which expresses the fact that the equations of motion of either of the two non-interacting parts cannot
+involve quantities pertaining to the other part.
+
+The multiplication of the Lagrangian of a mechanical system by an arbitrary constant also has no effect on the equations
+of motion. This corresponds to the natural arbitrariness in the choice of the unit of measurement of the Lagrangian.
+
+As the stationary-action principle is equivalent to the vanishing of the first variation, the Lagrangian is defined only
+to within an additive total time derivative of any function or coordinates and time; i.e., two Lagrangians differing by
+\(\dis \frac{\diff}{\diff t} f(\vct{q}, t)\) wherein \(f\) is some function of coordinates and time give rise to the
+same equations of motion.
+
+\subsection{Galilean Invariance}
+
+It is necessary to choose a \emph{frame of reference} when considering mechanical phenomena, and the equations of motion
+are in general different for different frames of reference.
+
+It is found that a frame of reference can always be chosen in which space is homogeneous and isotropic and time is
+homogeneous, referred to as an \emph{inertial frame of reference}.
+
+We may draw some immediate inferences concerning the form of the Lagrangian of a particle moving freely in an inertial
+frame of reference. The homogeneity of space and time implies that the Lagrangian cannot contain explicitly either
+\(\vct{r}\) or \(t\). Thus, \(L\) must be a function of \(\vct{v}\) only. Since space is isotropic, the Lagrangian must
+be independent of the direction of \(\vct{v}\) and is therefore a function only of its norm \(\norm{\vct{v}}\). As such,
+we see that the Euler--Lagrange equation is
+\[
+  \frac{\diff}{\diff t} \frac{\partial L}{\partial \vct{v}} = 0,
+\]
+which implies that \(\vct{v}\) is constant.
+
+Therefore, we conclude that, in an inertial frame of reference, any free motion takes place with a velocity constant in
+both magnitude and direction. This is \emph{Newton's first law of motion} or the \emph{principle of inertia}.
+
+Experiments show that another frame moving uniformly in a straight line relative to an inertial frame of reference is
+entirely equivalent in all mechanical respects to the inertial frame. Thus, there is an infinity of inertial frames
+moving, relative to one another, uniformly in a straight line, and in all these frames the properties of space and time
+are identical, and the laws of motion are the same. This is referred to as \emph{Galilean invariance}.
+
+In what follows, unless the contrary is specifically stated, we shall consider only inertial frames of reference.
+
+The coordinates \(\vct{r}_0\) and \(\vct{r}_1\) of a given point in two different frames of reference, of which the
+latter moves relative to the former with velocity \(\vct{v}\), are related by
+\[
+  \vct{r}_0 = \vct{r}_1 + \vct{v} t.
+\]
+Here, it is assumed that time is the same in the two frames, \(t = t_0 = t_1\), which is one of the foundations of
+classical mechanics. These formulae are referred to as a \emph{Galilean transformation}.
 
 \Edc
