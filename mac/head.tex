@@ -2,27 +2,27 @@
 
 \makeatletter
 \def\@maketitle {
-    \newpage
-    \null
-    \vskip 2em
-    \begin{center}
-        \let \footnote \thanks
-        {
-            \Large\bfseries \MakeUppercase{\@title} \par
-        }
-        \vskip 1.5em
-        {
-            \large \lineskip .5em \begin{tabular}[t]{c}
-                \MakeUppercase{\@author}
-            \end{tabular} \par
-        }
-        \vskip 1.5em
-        {
-            \large\scshape \@date
-        }
-    \end{center}
-    \par
+  \newpage
+  \null
+  \vskip 2em
+  \begin{center}
+    \let \footnote \thanks
+    {
+      \Large\bfseries \MakeUppercase{\@title} \par
+    }
     \vskip 1.5em
+    {
+      \large \lineskip .5em \begin{tabular}[t]{c}
+        \MakeUppercase{\@author}
+      \end{tabular} \par
+    }
+    \vskip 1.5em
+    {
+      \large\scshape \@date
+    }
+  \end{center}
+  \par
+  \vskip 1.5em
 }
 \makeatother
 
@@ -79,60 +79,72 @@
 \renewcommand*{\cftsecpagefont}{\normalfont}
 \renewcommand*{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \titleformat{\section}{
-    \normalfont\Large\scshape\filcenter
+  \normalfont\Large\scshape\filcenter
 }{}{1em}{}
 \titleformat{\subsection}{
-    \normalfont\large\scshape\raggedright
+  \normalfont\large\scshape\raggedright
 }{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{
-    \normalfont\normalsize\scshape\raggedright
+  \normalfont\normalsize\scshape\raggedright
 }{\thesubsubsection}{1em}{}
 \setcounter{footnote}{1}
+\DeclareEmphSequence{\bfseries\itshape}
 
 %% maths
 \makeatletter
 \newtheoremstyle{dfn}
-    {\topsep}
-    {\topsep}
-    {\upshape\addtolength{\@totalleftmargin}{3em}
-    \addtolength{\linewidth}{-6em}
-    \parshape 1 3em \linewidth}
-    {0pt}
-    {\scshape}
-    {.}
-    {5pt plus 1pt minus 1pt}
-    {}
+  {\topsep}
+  {\topsep}
+  {\upshape\addtolength{\@totalleftmargin}{3em}
+  \addtolength{\linewidth}{-6em}
+  \parshape 1 3em \linewidth}
+  {0pt}
+  {\scshape}
+  {.}
+  {5pt plus 1pt minus 1pt}
+  {}
 \newtheoremstyle{thm}
-    {\topsep}
-    {\topsep}
-    {\slshape\addtolength{\@totalleftmargin}{3em}
-    \addtolength{\linewidth}{-6em}
-    \parshape 1 3em \linewidth}
-    {0pt}
-    {\bfseries}
-    {.}
-    {5pt plus 1pt minus 1pt}
-    {}
+  {\topsep}
+  {\topsep}
+  {\slshape\addtolength{\@totalleftmargin}{3em}
+  \addtolength{\linewidth}{-6em}
+  \parshape 1 3em \linewidth}
+  {0pt}
+  {\bfseries}
+  {.}
+  {5pt plus 1pt minus 1pt}
+  {}
+\newtheoremstyle{xmp}
+  {\topsep}
+  {\topsep}
+  {\upshape\addtolength{\@totalleftmargin}{3em}
+  \addtolength{\linewidth}{-6em}
+  \parshape 1 3em \linewidth}
+  {0pt}
+  {\bfseries}
+  {.}
+  {5pt plus 1pt minus 1pt}
+  {}
 \newtheoremstyle{xrc}
-    {\topsep}
-    {\topsep}
-    {\upshape\addtolength{\@totalleftmargin}{3em}
-    \addtolength{\linewidth}{-6em}
-    \parshape 1 3em \linewidth}
-    {0pt}
-    {\bfseries\scshape}
-    {.}
-    {5pt plus 1pt minus 1pt}
-    {}
+  {\topsep}
+  {\topsep}
+  {\upshape\addtolength{\@totalleftmargin}{3em}
+  \addtolength{\linewidth}{-6em}
+  \parshape 1 3em \linewidth}
+  {0pt}
+  {\bfseries\scshape}
+  {.}
+  {5pt plus 1pt minus 1pt}
+  {}
 \newtheoremstyle{sol}
-    {\topsep}
-    {\topsep}
-    {\upshape}
-    {0pt}
-    {\itshape}
-    {.}
-    {5pt plus 1pt minus 1pt}
-    {}
+  {\topsep}
+  {\topsep}
+  {\upshape}
+  {0pt}
+  {\itshape}
+  {.}
+  {5pt plus 1pt minus 1pt}
+  {}
 \makeatother
 \theoremstyle{dfn}
 \newtheorem{dfn}{Definition}
@@ -141,13 +153,15 @@
 \newtheorem{lem}{Lemma}
 \newtheorem{cor}{Corollary}
 \renewcommand\qedsymbol{\(\mdlgwhtsquare\)}
+\theoremstyle{xmp}
+\newtheorem{xmp}{Example}
 \theoremstyle{xrc}
 \newtheorem{xrc}{Exercise}
 \theoremstyle{sol}
 \newtheorem*{XxmpX}{Solution}
 \newenvironment{solution}{
-    \renewcommand{\qedsymbol}{\(\mdlgwhtlozenge\)}
-    \pushQED{\qed}\begin{XxmpX}
+  \renewcommand{\qedsymbol}{\(\mdlgwhtlozenge\)}
+  \pushQED{\qed}\begin{XxmpX}
 }{\popQED\end{XxmpX}}
 \def\equationautorefname~#1\null{(#1)\null}
 \newcommand{\dfnautorefname}{definition}
@@ -157,18 +171,18 @@
 
 %% aliases
 \newcommand*{\Bdc}[2][\today]{
-    \title{#2}
-    \author{Yannan Mao}
-    \date{#1}
-    \lhead{\scshape #2}
-    \rhead{\scshape Yannan Mao}
-    \begin{document}
-    \maketitle
-    \tableofcontents
-    \thispagestyle{empty}
-    \clearpage
-    \pagestyle{fancy}
-    \setcounter{page}{1}
+  \title{#2}
+  \author{Yannan Mao}
+  \date{#1}
+  \lhead{\scshape #2}
+  \rhead{\scshape Yannan Mao}
+  \begin{document}
+  \maketitle
+  \tableofcontents
+  \thispagestyle{empty}
+  \clearpage
+  \pagestyle{fancy}
+  \setcounter{page}{1}
 }
 \newcommand*{\Edc}{\end{document}}
 \newcommand*{\Bdf}{\begin{dfn}}
@@ -179,6 +193,8 @@
 \newcommand*{\Elm}{\end{lem}}
 \newcommand*{\Bcr}{\begin{cor}}
 \newcommand*{\Ecr}{\end{cor}}
+\newcommand*{\Bxm}{\begin{xmp}}
+\newcommand*{\Exm}{\end{xmp}}
 \newcommand*{\Bxr}{\begin{xrc}}
 \newcommand*{\Exr}{\end{xrc}}
 \newcommand*{\Bpr}{\begin{proof}}

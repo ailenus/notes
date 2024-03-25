@@ -37,15 +37,15 @@ Young's inequality.
 \Bth[Cauchy--Schwarz]
 For an \(x = (x_1, \ldots, x_n) \in \setreal^n\), let
 \[
-    \norm{x}_p = \left(\sum_{i = 1}^n \abs{x_i}^p\right)^\frac{1}{p}
+  \norm{x}_p = \left(\sum_{i = 1}^n \abs{x_i}^p\right)^\frac{1}{p}
 \]
 for some \(p \in \posreal\), and let
 \[
-    \norm{x}_\infty = \max_{i \in \Nln} \set{\abs{x_{i + 1}}}.
+  \norm{x}_\infty = \max_{i \in \Nln} \set{\abs{x_{i + 1}}}.
 \]
 Then
 \[
-    \abs*{\sum_{i = 1}^n x_i y_i} \le \norm{x}_p \norm{y}_q
+  \abs*{\sum_{i = 1}^n x_i y_i} \le \norm{x}_p \norm{y}_q
 \]
 wherein \(p, q \in \posreal \cup \set{\infty}\) and \(\dis \frac{1}{p} + \frac{1}{q} = 1\).
 \Eth
@@ -54,29 +54,35 @@ wherein \(p, q \in \posreal \cup \set{\infty}\) and \(\dis \frac{1}{p} + \frac{1
 We may assume that \(\norm{x}_p = \norm{y}_q = 1\) without loss of generality. By Young's inequality, which states that
 for \(a, b \in \nonneg\) we have \(\dis a b \le \frac{a^p}{p} + \frac{b^q}{q}\), we find that
 \[
-    \abs*{\sum_{i = 1}^n x_i y_i} \le \sum_{i = 1}^n \abs{x_i y_i} \le \sum_{i =
-    1}^n \left(\frac{\abs{x_i}^p}{p} + \frac{\abs{y_i}^q}{q}\right) = 1.
+  \abs*{\sum_{i = 1}^n x_i y_i} \le \sum_{i = 1}^n \abs{x_i y_i} \le \sum_{i =
+  1}^n \left(\frac{\abs{x_i}^p}{p} + \frac{\abs{y_i}^q}{q}\right) = 1.
 \]
 
 To prove Young's inequality, let \(\dis t = \frac{1}{p}\). Then \(\dis \frac{1}{q} = 1 - t\). It follows that
 \[
-    \ln \big(t x + (1 - t) y \big) \ge t \ln x + (1 - t) \ln y. \qedhere
+  \ln \big(t x + (1 - t) y \big) \ge t \ln x + (1 - t) \ln y. \qedhere
 \]
 \Epr
 
 \section{Section the Third}
 
-\Bxr[Euler]
+\Bxm[Noether]
 \kant[6]
-\Exr
+\Exm
 
 \subsection{Subsection the First of Section the Third}
+
+\Bxr[Euler]
+\kant[7]
+\Exr
+
+\subsection{Subsection the Second of Section the Third}
 
 \Bpr
 The proof is trivial.
 \Epr
 
-\subsection{Subsection the Second of Section the Third}
+\subsection{Subsection the Third of Section the Third}
 
 \Bsl[Riemann]
 The solution is trivial.
