@@ -1,0 +1,36 @@
+\input{./mac/head.tex}
+\input{./mac/maths.tex}
+
+\usepackage{lyluatex}
+
+\Bdc{Notes on Tonality}
+
+\section{Fundamentals}
+
+\subsection{Metres}
+
+In music, a steady and regular pulse is a \emph{beat}, which may be \emph{strong} or \emph{weak} and are grouped into
+\emph{bars} or \emph{measures} separated by \emph{bar lines}. The first beat of each bar is accented and referred to as
+the \emph{downbeat}.
+
+An arrangement of rhythm into a pattern of strong and weak beats is a \emph{metre}, which is defined by a \emph{time
+signature}, consisting of two stacked numbers.
+
+\begin{lilypond}
+  music = \relative {
+    c d e
+  }
+  \score {
+    \new ChoirStaff \with {
+      instrumentName = "2 Fl."
+    } <<
+    \new Staff \transpose c c' \music
+    \new Staff {
+      \clef bass
+      \music
+    }
+    >>
+  }
+\end{lilypond}
+
+\Edc

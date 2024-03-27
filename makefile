@@ -1,10 +1,10 @@
 ifeq ($(os), win)
-	TEX = lualatex.exe
-	CLEAN = powershell -Command "Remove-Item *.aux, *.log, *.out, *.toc, *.synctex.gz -ErrorAction SilentlyContinue"
+	TEX = lualatex.exe --shell-escape
+	CLEAN = powershell -Command "Remove-Item *.aux, *.log, *.out, *.toc, *.synctex.gz tmp-ly -Recurse -Force -ErrorAction SilentlyContinue"
 	OPEN = powershell -Command "sumatra"
 else ifeq ($(os), mac)
-	TEX = lualatex
-	CLEAN = rm -f *.aux *.log *.out *.toc *.synctex.gz
+	TEX = lualatex --shell-escape
+	CLEAN = rm -rf *.aux *.log *.out *.toc *.synctex.gz tmp-ly
 	OPEN = open -a Preview.app
 else
 $(error Please specify platform with 'os=win' or 'os=mac')
