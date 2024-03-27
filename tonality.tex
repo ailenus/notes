@@ -1,6 +1,7 @@
 \input{./mac/head.tex}
 \input{./mac/maths.tex}
 
+\usepackage{lilyglyphs}
 \usepackage{lyluatex}
 
 \Bdc{Notes on Tonality}
@@ -14,23 +15,15 @@ In music, a steady and regular pulse is a \emph{beat}, which may be \emph{strong
 the \emph{downbeat}.
 
 An arrangement of rhythm into a pattern of strong and weak beats is a \emph{metre}, which is defined by a \emph{time
-signature}, consisting of two stacked numbers.
+signature}, consisting of two stacked numbers. The bottom number determines the note value of each beat, and the top
+number determines the number of beats in each bar. The metre is \emph{simple} if the beat unit is not dotted and
+\emph{compound} otherwise.
 
-\begin{lilypond}
-  music = \relative {
-    c d e
-  }
-  \score {
-    \new ChoirStaff \with {
-      instrumentName = "2 Fl."
-    } <<
-    \new Staff \transpose c c' \music
-    \new Staff {
-      \clef bass
-      \music
-    }
-    >>
-  }
-\end{lilypond}
+\subsubsection{Simple Metres}
+
+In simple metres, the quarter note is the most common beat, and the eighth note and the half note may also function as
+the beat. The quadruple simple metre with the quarter note as the beat \lilyTimeSignature{4}{4} is known as \emph{common
+time} and written \lilyTimeC. The duple simple metre with the half note as the beat \lilyTimeSignature{2}{2} is known as
+\emph{alla breve} or \emph{cut common time} and written \lilyTimeCHalf.
 
 \Edc

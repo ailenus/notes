@@ -1,6 +1,6 @@
 ifeq ($(os), win)
 	TEX = lualatex.exe --shell-escape
-	CLEAN = powershell -Command "Remove-Item *.aux, *.log, *.out, *.toc, *.synctex.gz tmp-ly -Recurse -Force -ErrorAction SilentlyContinue"
+	CLEAN = powershell -Command "try { Remove-Item *.aux, *.log, *.out, *.toc, *.synctex.gz, tmp-ly -Recurse -Force -ErrorAction Stop } catch { echo . }"
 	OPEN = powershell -Command "sumatra"
 else ifeq ($(os), mac)
 	TEX = lualatex --shell-escape
