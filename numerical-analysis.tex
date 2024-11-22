@@ -1,0 +1,523 @@
+\input{./mac/head.tex}
+\input{./mac/maths.tex}
+
+\Bdc{Notes on Numerical Analysis}
+
+\section{Approximation Theory}
+
+\subsection{Review of Relevant Topics}
+
+An \emph{algebraic structure} consists of one or more sets with one or more binary operations thereon. We denote an
+algebraic structure by an \(n\)-tuple whose first element is the \emph{carrier set of the algebraic structure} and is
+followed by other sets followed by the binary operations.
+
+When there is no confusion, we refer to the algebraic structure by the carrier set thereof.
+
+\subsubsection{Groups, Rings, and Fields}
+
+\Bdf
+  A \emph{group} is an ordered pair \((G, *)\) wherein
+  \begin{enumerate}
+    \item \(G\) is a set; and
+    \item \(*\) is a binary operation on \(G\) which satisfies
+    \begin{enumerate}
+      \item \(*\) is closed;
+      \item \(*\) is associative;
+      \item there exists an identity element for \(*\); and
+      \item for each each element in \(G\) there exists an inverse element thereof.
+    \end{enumerate}
+  \end{enumerate}
+
+  If \(*\) is commutative, the group is \emph{abelian}.
+\Edf
+
+\Bdf
+  A \emph{ring} is an ordered triple \((K, *, \star)\) wherein
+  \begin{enumerate}
+    \item \((K, *)\) is an abelian group; and
+    \item \(\star\) is a binary operation on \(K\) which satisfies
+    \begin{enumerate}
+      \item \(\star\) is closed;
+      \item \(\star\) is commutative;
+      \item \(\star\) is associative; and
+      \item \(\star\) is distributive over \(*\).
+    \end{enumerate}
+  \end{enumerate}
+
+  If there exists an identity element for \(\star\), the ring is \emph{unital}.
+
+  If \(\star\) is commutative, the ring is \emph{commutative}.
+\Edf
+
+\Bdf
+  A \emph{field} is a unital commutative ring \((F, *, \star)\) which satisfies
+  \begin{enumerate}
+    \item the identity for \(*\) is distinct from the identity for \(\star\);
+    \item for each element in \(F\) distinct from the identity for \(*\) there exists an inverse element thereof for
+    \(\star\).
+  \end{enumerate}
+\Edf
+
+The set \(\setint\) with addition and multiplication is a unital commutative ring which is not a field, referred to as
+the \emph{ring of integers}.
+
+The set \(\setcomp\) with addition and multiplication is a field. A \emph{subfield of the field \(\setcomp\)} is a set
+\(F \subseteq \setcomp\) which is itself a field with addition and multiplication.
+
+The set \(\setrat\) is a subfield of \(\setcomp\). Any subfield of \(\setcomp\) contains \(\setrat\).
+
+If \((K, *, \star)\) is a ring, we may apply \(*\) to the identity for \(\star\) with itself finitely many times and
+obtain the identity for \(*\). If this happens in \(K\), the least positive integer \(n\) such that applying \(*\) to
+the identity for \(\star\) \(n\) times results in the identity for \(*\) is the \emph{characteristic of the ring \(K\)}.
+If this does not happen in \(K\), then \(K\) is a \emph{ring of characteristic zero}.
+
+Any subfield of \(\setcomp\) is of characteristic zero.
+
+\subsubsection{Vector Spaces}
+
+Suppose \((F, +, \cdot)\) is a field. We write \(\lambda \mu\) as a shorthand for \(\lambda \cdot \mu\) for any
+\(\lambda, \mu \in F\). We denote by \(0\) the identity for \(+\) in \(F\), and \(1\) the identity for \(\cdot\) in
+\(F\). We refer to \(0\) as \emph{zero}.
+
+\Bdf
+  A \emph{vector space} is an ordered quadruple \((V, F, +, \cdot)\) wherein
+  \begin{enumerate}
+    \item \(V\) is a set, whose elements are referred to as \emph{vectors};
+    \item \(F\) is a field, whose elements are referred to as \emph{scalars};
+    \item \(+\) is a binary operation on \(V\), referred to as \emph{vector addition}, which satisfies
+    \begin{enumerate}
+      \item \(+\) is closed;
+      \item \(+\) is commutative;
+      \item \(+\) is associative;
+      \item there exists an identity element for \(+\), referred to as the \emph{zero vector} and denoted by
+      \(\vct{0}\); and
+      \item for each \(\vct{a} \in V\) there exists an inverse element thereof, denoted by \(-\vct{a}\);
+    \end{enumerate}
+    and
+    \item \(\map{\cdot}{F \times V}{V}\) is a binary operation, referred to as \emph{scalar multiplication}, which
+    satisfies
+    \begin{enumerate}
+      \item \(1 \cdot \vct{a}\) for each \(\vct{a} \in V\);
+      \item \((\lambda \mu) \cdot \vct{a} = \lambda \cdot (\mu \cdot \vct{a})\) for any \(\lambda, \mu \in F\) and
+      \(\vct{a} \in V\);
+      \item \(\lambda \cdot (\vct{a} + \vct{b}) = \lambda \cdot \vct{a} + \lambda \cdot \vct{b}\) for any
+      \(\lambda \in F\) and \(\vct{a}, \vct{b} \in V\); and
+      \item \((\lambda + \mu) \cdot \vct{a} = \lambda \cdot \vct{a} + \mu \cdot \vct{a}\) for any \(\lambda, \mu \in F\)
+      and \(\vct{a} \in V\).
+    \end{enumerate}
+  \end{enumerate}
+
+  For vectors \(\vct{a}\) and \(\vct{b}\), we refer to \(\vct{a} + \vct{b}\) as the \emph{sum of \(\vct{a}\) and
+  \(\vct{b}\)}. For a scalar \(\lambda\) and a vector \(\vct{a}\), we refer to \(\lambda \cdot \vct{a}\) as the
+  \emph{product of \(\lambda\) and \(\vct{a}\)}.
+\Edf
+
+We write \(\lambda \vct{a}\) as a shorthand for the product of \(\lambda\) and \(\vct{a}\).
+
+The same set of vectors \(V\) may be the carrier set of a number of distinct vector spaces. When it is desirable to
+specify the field, we say \(V\) is a \emph{vector space over the field \(F\)}.
+
+A \emph{subspace of a vector space \(V\)} is a set \(W \subseteq V\) which is itself a vector space over the same field
+with the operations of vector addition and scalar multiplication on \(V\).
+
+\subsubsection{Bases and Dimensions}
+
+Suppose \(F\) is a field.
+
+\Bdf
+  Let \(V\) be a vector space over \(F\). A set \(S \subseteq V\) is \emph{linearly dependent} if there exist \((n
+  + 1)\) distinct vectors \(\vct{a}_0, \ldots, \vct{a}_n \in S\) and \((n + 1)\) scalars \(\lambda_0, \ldots, \lambda_n
+  \in F\), not all of which are zero, such that
+  \[
+    \sum_{i = 0}^{n} \lambda_i \vct{a}_i = \vct{0}.
+  \]
+
+  A set which is not linearly dependent is \emph{linearly independent}.
+
+  If the set \(S\) is finite, we also say that the vectors in \(S\) are linearly dependent or independent.
+\Edf
+
+A set which contains a linearly dependent set is linearly dependent.
+
+A subset of a linearly independent set is linearly independent.
+
+A set which contains \(\vct{0}\), the zero vector, is linearly dependent.
+
+A set is linearly independent if and only if each finite subset thereof is linearly independent.
+
+\Bdf
+  Let \(V\) be a vector space, and let \(S \subseteq V\). The \emph{subspace spanned by the set \(S\)} is the
+  intersection \(W\) of all subspaces of \(V\) which contain \(S\).
+
+  If \(S\) is finite, we say the vectors in \(S\) span \(W\).
+\Edf
+
+\Bdf
+  Let \(V\) be a vector space. A \emph{basis for \(V\)} is a linearly independent set of vectors in \(V\) which spans
+  \(V\).
+
+  A vector space is \emph{finite-dimensional} if it has a finite basis, and \emph{infinite-dimensional} otherwise.
+\Edf
+
+It follows from the axiom of choice that every vector space has a basis.
+
+If \(V\) is a finite-dimensional vector space, any two bases for \(V\) are of the same cardinality. This allows us to
+define the \emph{dimension of a finite vector space} as the cardinality of any basis therefor.
+
+\subsubsection{The \(n\)-Tuple Space and the Standard Basis Thereof}
+
+Suppose \(F\) is a field.
+
+\Bxm
+  We denote by \(F^n\) the set of all \(n\)-tuples \(\vct{a} = (a_0, \ldots, a_{n - 1})\) of scalars \(a_i \in F\),
+  \(0 \leq i < n\).
+
+  If \(\vct{a}, \vct{b} \in F\) with \(\vct{a} = (a_0, \ldots, a_{n - 1})\) and \(\vct{b} = (b_0, \ldots, b_{n - 1})\),
+  we define the sum of \(\vct{a}\) and \(\vct{b}\) by
+  \[
+    \vct{a} + \vct{b} = (a_0 + b_0, \ldots, a_{n - 1} + b_{n - 1}).
+  \]
+  And we define the product of \(\lambda \in F\) and \(\vct{a}\) by
+  \[
+    \lambda \vct{a} = (\lambda a_0, \ldots, \lambda a_{n - 1}).
+  \]
+
+  Thus defined, \(F^n\) is a vector space, referred to as the \emph{\(n\)-tuple space}.
+
+  As a special case for when \(n = 1\), the field \(F\) itself is a vector space.
+\Exm
+
+\Bxm
+  Let \(E \subseteq F^n\) consist of the vectors \(\vct{e}_0, \vct{e}_1, \ldots, \vct{e}_{n - 1}\) defined by
+  \begin{align*}
+    \vct{e}_0 & = (1, 0, \ldots, 0),\\
+    \vct{e}_1 & = (0, 1, \ldots, 0),\\
+    & \vdots\\
+    \vct{e}_{n - 1} & = (0, 0, \ldots, 1).
+  \end{align*}
+
+  Thus defined, the set \(E\) is the \emph{standard basis of the \(n\)-tuple space \(F^n\)}.
+\Exm
+
+\subsubsection{Algebras}
+
+Suppose \(F\) is a field.
+
+\Bdf
+  An \emph{algebra over the field \(F\)} is an ordered quintuple \((\mathcal{A}, F, +, \cdot, \times)\) wherein
+  \begin{enumerate}
+    \item \((\mathcal{A}, F, +, \cdot)\) is a vector space; and
+    \item \(\times\) is a binary operation on \(\mathcal{A}\), referred to as \emph{vector multiplication}, which
+    satisfies
+    \begin{enumerate}
+      \item \(\times\) is closed;
+      \item \(\times\) is distributive over \(+\); and
+      \item \(\lambda (\vct{a} \times \vct{b}) = (\lambda \vct{a}) \times \vct{b} = \vct{a} \times (\lambda \vct{b})\)
+      for any \(\lambda \in F\) and \(\vct{a}, \vct{b} \in \mathcal{A}\).
+    \end{enumerate}
+  \end{enumerate}
+
+  If there exists an identity element for \(\times\), the algebra is \emph{unital}.
+
+  If \(\times\) is commutative, the algebra is \emph{commutative}.
+
+  If \(\times\) is associative, the algebra is \emph{associative}.
+
+  For vectors \(\vct{a}\) and \(\vct{b}\), we refer to \(\vct{a} \times \vct{b}\) as the \emph{product of \(\vct{a}\)
+  and \(\vct{b}\)}.
+\Edf
+
+\Bxm
+  The set of \((n \times n)\) matrices over the field \(F\), with the usual matrix operations, is a unital associative
+  algebra, which is not commutative if \(n > 1\).
+
+  As a special case for when \(n = 1\), the field \(F\) itself is a unital commutative associative algebra.
+\Exm
+
+\subsubsection{Polynomials}
+
+Suppose \(F\) is a field.
+
+\Bxm
+  Let \(S\) be a nonempty set, and let \(V\) be the set of functions from \(S\) into the field \(F\).
+
+  We define the sum of \(f, g \in V\) by
+  \[
+    (f + g)(s) = f(s) + g(s)
+  \]
+  for each \(s \in S\). And we define the product of \(\lambda \in F\) and \(f \in V\) by
+  \[
+    (\lambda f)(s) = \lambda f(s)
+  \]
+  for each \(s \in S\).
+  
+  Thus defined, \(V\) is a vector space, referred to as the \emph{space of functions from the set \(S\) into the field
+  \(F\)}.
+\Exm
+
+Note that \(F^n\), the \(n\)-tuple space, is a special case of the space of functions, if we take the set \(S\) to be
+\(\Nln\), the set of natural numbers less than \(n\), and consider an \(n\)-tuple to be a function indexed by \(\Nln\).
+
+We now consider the space of functions from \(\setnat\) into \(F\). We denote this space by \(F^\infty\). A vector in
+\(F^\infty\) is thus an infinite sequence \(f = (f_0, f_1, f_2, \ldots)\) of scalars \(f_i \in F\), \(i \in \setnat\).
+
+For two vectors \(f, g \in F^\infty\) with \(f = (f_0, f_1, f_2, \ldots)\) and \(g = (g_0, g_1, g_2, \ldots)\), we
+define \(f g = f \times g\), the product of \(f\) and \(g\), by
+\[
+  (f g)_n = f_0 g_n + f_1 g_{n - 1} + f_2 g_{n - 2} + \cdots + f_n g_0 = \sum_{i = 0}^n f_i g_{n - i}.
+\]
+We may verify that \(F^\infty\) is an algebra with vector multiplication as defined above.
+
+Note that, thus defined, vector multiplication is commutative and associative, and the vector \(1 = (1, 0, 0, \ldots)\)
+is the vector-multiplicative identity. Therefore, \(F^\infty\) is a unital commutative associative algebra over the
+field \(F\).
+
+The vector \((0, 1, 0, \ldots)\) plays a distinguished role in \(F^\infty\), and we denote it by \(x\). The
+product of \(x\) multiplied by itself \(n\) times is denoted by \(x^n\), and we put \(x^0 = 1\). Then, the vector
+\(x^n\) is given by
+\[
+  x^n_i = \begin{cases}
+    1, \text{ if } i = n,\\
+    0, \text{ otherwise,}
+  \end{cases}
+\]
+wherein \(x^n_i\) denotes the \(i\)-th entry of \(x^n\).
+
+We observe that the set \(\set{x^n : n \in \setnat} \subseteq F^\infty\) is both independent and infinite. Thus, the
+space \(F^\infty\) is infinite-dimensional.
+
+The algebra \(F^\infty\) is referred to as the \emph{algebra of formal power series over \(F\)}. A vector \(f = (f_0,
+f_1, f_2, \ldots) \in F^\infty\) is written
+\[
+  f = f_0 + f_1 x + f_2 x^2 + \cdots = \sum_{n = 0}^\infty f_n x^n.
+\]
+
+\Bdf
+  Let \(F[x]\) be the subspace of \(F^\infty\) spanned by \(\set{x^n : n \in \setnat}\).
+
+  Thus defined, a vector in \(F[x]\) is referred to as a \emph{polynomial over the field \(F\)}.
+\Edf
+
+A nonzero vector \(f \in F^\infty\) is a polynomial if and only if there exists an \(n \in \setnat\) such that \(f_n
+\neq 0\) and that \(f_i = 0\) for each \(i > n\). This natural number \(n\) is unique, referred to as the \emph{degree
+of the polynomial \(f\)} and denoted by \(\deg f\).
+
+The degree of the zero vector \((0, 0, 0, \ldots)\), referred to as the \emph{zero polynomial} and denoted by \(0\), is
+undefined.
+
+If \(f \in F[x]\) is a nonzero polynomial of degree \(n\), it follows that
+\[
+  f = \sum_{i = 0}^n f_i x^i, \quad f_n \neq 0.
+\]
+
+Let \(f\) and \(g\) be nonzero polynomials over \(F\). Then \(f g\) is also a nonzero polynomial and \(\deg (f g)
+= \deg f + \deg g\). If in addition \(f + g \neq 0\), then \(\deg (f + g) \leq \max\set{\deg f, \deg g}\).
+
+\subsubsection{Roots of Polynomials}
+
+Suppose \(F\) is a field.
+
+\Blm
+  \label{lm00}
+  Let \(f\) and \(d\) be nonzero polynomials over the field \(F\) such that \(\deg f \geq \deg d\). Then there exists a
+  polynomial \(g \in F[x]\) such that either \(f - d g = 0\) or \(\deg (f - d g) < \deg f\).
+\Elm
+\Bpr
+  Suppose that
+  \[
+    f = f_m x^m + \sum_{i = 0}^{m - 1} f_i x^i, \quad f_m \neq 0,
+  \]
+  and that
+  \[
+    d = d_n x^n + \sum_{j = 0}^{n - 1} d_j x^j, \quad d_n \neq 0.
+  \]
+  Then \(m \geq n\), and either
+  \[
+    f - \frac{f_m}{d_n} x^{m - n} = 0
+  \]
+  or
+  \[
+    \deg \left(f - \frac{f_m}{d_n} x^{m - n} d\right) < \deg f.
+  \]
+  Hence, we may take \(\dis g = \frac{f_m}{d_n} x^{m - n}\), which satisfies the condition.
+\Epr
+
+\Bth
+  \label{th00}
+  If \(f\) and \(d\) are polynomials over the field \(F\) and \(d \neq 0\), then there exist a unique pair of
+  polynomials \(q, r \in F[x]\) such that
+  \begin{enumerate}
+    \item \(f = d q + r\); and
+    \item either \(r = 0\) or \(\deg r < \deg d\).
+  \end{enumerate}
+\Eth
+\Bpr
+  If \(f = 0\) or \(\deg f < \deg d\), then \(q = 0\) and \(r = f\).
+
+  If \(f \neq 0\) and \(\deg f \geq \deg d\), by \autoref{lm00} we may choose a polynomial \(g_0\) such that \(f - d g_0
+  = 0\) or \(\deg (f - d g_0) < \deg f\). If \(f - d g_0 = 0\), then \(q = g_0\) and \(r = 0\). If \(f - d g_0 \neq 0\)
+  and \(\deg (f - d g_0) < \deg d\), then \(q = g_0\) and \(r = f - d g_0\).
+
+  If \(f - d g_0 \neq 0\) and \(\deg (f - d g_0) \geq \deg d\), we apply \autoref{lm00} again and choose another
+  polynomial \(g_1\) such that \(f - d (g_0 + g_1) = 0\) or \(\deg \big(f - d (g_0 + g_1)\big) < \deg (f - d g_0)\).
+  Continuing this process, in the end we obtain polynomials \(q\) and \(r\) such that \(r = 0\) or \(\deg r < \deg d\)
+  and that \(f = d q + r\).
+
+  To prove that \(q\) and \(r\) are unique, suppose for the sake of contradiction we also have \(f = d q' + r'\) with
+  \(r' = 0\) or \(\deg r' < \deg d\). It follows that \(d q + r = d q' + r'\), and then \(d (q - q') = r' - r\). Because
+  \(q - q' \neq 0\), we have \(d (q - q') \neq 0\), and so \(\deg d + \deg (q - q') = \deg (r' - r)\). This is a
+  contradiction, as \(\deg (r' - r) < \deg d\). Ergo, our supposition is false.
+
+  Hence, the theorem holds.
+\Epr
+
+\Bdf
+  Let \(d\) be a nonzero polynomial over the field \(F\). If \(f \in F[x]\), then by \autoref{th00} there exists at most
+  one polynomial \(q \in F[x]\) such that \(f = d q\). If such a \(q\) exists, we say that \emph{\(d\) divides \(f\)},
+  that \emph{\(f\) is divisible by \(d\)}, that \(d\) is a \emph{divisor of \(f\)}, that \(f\) is a \emph{multiple of
+  \(d\)}, and that \(q\) is the \emph{quotient of \(f\) and \(d\)}; and we write \(d \, | \, f\) and \(q = f / d\).
+\Edf
+
+\Bdf
+  Let \(f\) be a polynomial over the field \(F\). A scalar \(c \in F\) is a \emph{root of \(f\) over the field \(F\)} if
+  \(f(c) = 0\).
+\Edf
+
+\Bcr
+  Let \(f\) be a polynomial over the field \(F\), and let \(c \in F\). Then \((x - c) \, | \, f\) if and only if \(c\)
+  is a root of \(f\).
+\Ecr
+\Bpr
+  By \autoref{th00}, \(f = (x - c) q + r\) wherein \(r\) is a scalar polynomial. Then, \(f(c) = r(c)\). It follows that
+  \(r = 0\) if and only if \(f(c) = 0\).
+\Epr
+
+If \(c\) is a root of a polynomial \(f\), the \emph{multiplicity of \(c\) as a root of \(f\)} is the largest positive
+integer \(n\) such that \((x - c)^n \, | \, f\).
+
+The multiplicity of any root of \(f\) is at most \(\deg f\).
+
+Thus concludes our review of relevant topics.
+
+\subsection{Bézier Curves}
+
+We investigate polynomials in the \(d\)-dimensional Euclidean space \(\setreal^d\).
+
+\Bdf
+  A \emph{polynomial of degree \(n\) in \(\setreal^d\)} is a function \(\map{\vct{p}}{\setreal}{\setreal^d}\) defined by
+  \[
+    \vct{p}(t) = \sum_{i = 0}^n \vct{a}_i t_i, \quad \vct{a}_i \in \setreal^d \text{ and } \vct{a}_n \neq \vct{0}.
+  \]
+
+  We denote the space of polynomials of degree less than or equal to \(n\) in \(\setreal^d\) by \(P_n^d\).
+
+  As a special case for when \(d = 1\), the space is denoted by \(P_n\) and a polynomial \(p \in P_n\) is given by
+  \[
+    p(t) = \sum_{i = 0}^n a_i t_i, \quad a_i \in \setreal.
+  \]
+\Edf
+
+Let \(\set{\vct{e}_0, \ldots, \vct{e}_{d - 1}}\) be the standard basis of \(\setreal^d\). If \(\set{p_0, \ldots, p_n}\)
+is a basis for \(P_n\), then the polynomials
+\[
+  \set{p_i \vct{e}_j : i \in \setnat_{\leq n} \text{ and } j \in \setnat_{< d}}
+\]
+form a basis for \(P_n^d\).
+
+% The graph \(\Gamma_{\vct{p}}\) of a polynomial \(\vct{p} \in P_n^d\), given by
+% \[
+%   \map{\Gamma_{\vct{p}}}{\setreal}{\setreal^{d + 1}}, \quad t \mapsto \big(t, \vct{p}(t)\big),
+% \]
+% may now be considered a polynomial \(\Gamma_{\vct{p}} \in P_n^{d + 1}\).
+
+% If \(\vct{p} \in P_n^d\) is given in coefficient representation
+% \[
+%   \vct{p}(t) = \vct{a}_0 + \vct{a}_1 t + \vct{a}_2 t^2 + \cdots + \vct{a}_n t^n = \sum_{i = 0}^n \vct{a}_i t_i,
+% \]
+% then the graph of \(\vct{p}\) is
+% \[
+%   \Gamma_{\vct{p}}(t) = \binom{0}{\vct{a}_0} + \binom{1}{\vct{a}_1} t + \binom{0}{\vct{a}_2} t^2 + \cdots
+%   + \binom{0}{\vct{a}_n} t^n
+% \]
+
+\subsubsection{Berstein Basis Polynomials}
+
+We denote the closed interval between any \(a, b \in \setreal\) by \([a, b]\). Namely,
+\[
+  [a, b] = \set{x : x = \lambda a + (1 - \lambda) b \text{ and } 0 \leq \lambda \leq 1}.
+\]
+
+\Bdf
+  The \emph{\(i\)-th Bernstein basis polynomial of degree \(n\)} is the polynomial \(B_{i, n} \in P_n\) defined by
+  \[
+    B_{i, n}(t) = \binom{n}{i} (1 - t)^{n - i} t^i
+  \]
+  for each \(t \in [0, 1]\), wherein \(i \in \setnat_{\leq n}\).
+\Edf
+
+\Bxm
+  The first few Bernstein polynomials are
+  \begin{align*}
+    B_{0, 0}(t) & = 1,\\
+    B_{0, 1}(t) & = 1 - t, & B_{1, 1}(t) & = t,\\
+    B_{0, 2}(t) & = (1 - t)^2, & B_{1, 2}(t) & = 2 t (1 - t), & B_{2, 2}(t) & = t^2,\\
+    B_{0, 3}(t) & = (1 - t)^3, & B_{1, 3}(t) & = 3 t (1 - t)^2, & B_{2, 3}(t) & = 3 t^2 (1 - t), & B_{3, 3}(t) & = t^3.
+  \end{align*}
+\Exm
+
+For any closed interval \([a, b]\), we can apply to it an affine transformation onto the unit interval \([0, 1]\) by
+\[
+  t \mapsto \frac{t - a}{b - a}.
+\]
+Then, we define Bernstein basis polynomials with respect to any closed interval \([a, b]\) by
+\[
+  B_{i, n}(t; a, b) = B_{i, n}\left(\frac{t - a}{b - a}\right) = \frac{1}{(b - a)^n} \binom{n}{i} (t - a)^i (b - t)^{n
+  - i}
+\]
+for each \(t \in [a, b]\), wherein \(i \in \setnat_{\leq n}\).
+
+\Bth
+  The Bernstein basis polynomials \(B_{i, n}\) satisfy the following properties:
+  \begin{enumerate}
+    \item \(0\) is a root of multiplicity \(i\) of \(B_{i, n}\).
+    \item \(1\) is a root of multiplicity \((n - i)\) of \(B_{i, n}\).
+    \item \(B_{i, n}(t) = B_{n - i, n}(1 - t)\) for each \(t \in [0, 1]\).
+    \item \((1 - t) B_{0, n} = B_{n, n + 1}\) for each \(t \in [0, 1]\).
+    \item \(t B_{n, n} = B_{n + 1, n + 1}\) for each \(t \in [0, 1]\).
+    \item The \((n + 1)\) Bernstein basis polynomials \(B_{i, n}\), \(i \in \setnat_{\leq n}\), are nonnegative on
+    \([0, 1]\) and form a partition of unity; i.e., \(B_{i, n}(t) \geq 0\) and
+    \[
+      \sum_{i = 0}^n B_{i, n}(t) = 1
+    \]
+    for each \(t \in [0, 1]\).
+    \item \(B_{i, n}\) has a unique local maximum at \(\frac {i}{n}\).
+    \item The recurrence relation
+    \[
+      B_{i + 1, n}(t) = t B_{i, n - 1}(t) + (1 - t) B_{i + 1, n - 1}(t)
+    \]
+    for each \(t \in [0, 1]\) and \(i \in \Nln\) holds.
+    \item The \((n + 1)\) Bernstein basis polynomials \(B_{i, n}\), \(i \in \setnat_{\leq n}\), form a basis for
+    \(P_n\).
+  \end{enumerate}
+\Eth
+\Bpr
+  TODO % TODO
+\Epr
+
+Because the \((n + 1)\) Bernstein basis polynomials \(B_{i, n}\), \(i \in \setnat_{\leq n}\), form a basis for \(P_n\),
+the polynomials
+\[
+  \set{B_{i, n} \vct{e}_j : i \in \setnat_{\leq n} \text{ and } j \in \setnat_{< d}}
+\]
+form a basis for \(P_n^d\). Thus, a polynomial \(\vct{p} \in P_n^d\) may be written
+\[
+  \vct{p} = \sum_{i = 0}^n B_{i, n} \vct{\beta}_i, \quad \vct{\beta}_i \in \setreal^d,
+\]
+wherein each coefficient \(\vct{\beta}_i\), \(i \in \setnat_{\leq n}\), is given by
+\[
+  \vct{\beta}_i = \sum_{j = 0}^{d - 1} \lambda_j \vct{e}_j
+\]
+for some \(\lambda_j \in \setreal\), \(j \in \setnat_{< d}\). The coefficients \(\vct{\beta}_j\) are referred to as
+\emph{Bézier coefficients} and the \emph{control points of \(\vct{p}\)}.
+
+\Edc
